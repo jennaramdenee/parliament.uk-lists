@@ -2,9 +2,9 @@
   .container
     %h1= title(t('.title', current: t('current').capitalize, parties_and_groups: t('parties_and_groups')))
 
-    - if FlagHelper.dissolution?
+    - if Parliament::Utils::Helpers::FlagHelper.dissolution?
       = render partial: 'shared/dissolution_message'
-    - elsif FlagHelper.election?
+    - elsif Parliament::Utils::Helpers::FlagHelper.election?
       = render partial: 'shared/election_message'
 %section
   .container

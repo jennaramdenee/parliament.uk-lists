@@ -3,24 +3,24 @@
 #content.section--primary
   .container
 
-    %h1= "#{t('current_and_former').capitalize} #{HousesHelper.commons?(@house) ? t('party_plural') : t('parties_and_groups')}"
+    %h1= "#{t('current_and_former').capitalize} #{Parliament::Utils::Helpers::HousesHelper.commons?(@house) ? t('party_plural') : t('parties_and_groups')}"
 
 %section
   .container
 
     %ul.list--tab
-      - if HousesHelper.commons?(@house)
+      - if Parliament::Utils::Helpers::HousesHelper.commons?(@house)
         %li.active
           = t('commons')
       - else
         %li
-          = link_to(t('commons'),house_parties_path(HousesHelper.commons_id))
-      - if HousesHelper.lords?(@house)
+          = link_to(t('commons'),house_parties_path(Parliament::Utils::Helpers::HousesHelper.commons_id))
+      - if Parliament::Utils::Helpers::HousesHelper.lords?(@house)
         %li.active
           = t('lords')
       - else
         %li
-          = link_to(t('lords'),house_parties_path(HousesHelper.lords_id))
+          = link_to(t('lords'),house_parties_path(Parliament::Utils::Helpers::HousesHelper.lords_id))
 
     %ol.list--box
       = render partial: 'houses/parties/party', collection: @parties

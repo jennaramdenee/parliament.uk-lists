@@ -1,7 +1,7 @@
-- if FlagHelper.election? || FlagHelper.post_election?
+- if Parliament::Utils::Helpers::FlagHelper.election? || Parliament::Utils::Helpers::FlagHelper.post_election?
   .highlight--box.highlight--caution__soft
     %p
-      - if FlagHelper.election?
+      - if Parliament::Utils::Helpers::FlagHelper.election?
         - if @single_mp
           = t('shared.election_message.description_singular')
         - else

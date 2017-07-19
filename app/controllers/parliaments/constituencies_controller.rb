@@ -3,13 +3,13 @@ module Parliaments
     before_action :data_check, :build_request
 
     ROUTE_MAP = {
-      index:   proc { |params| ParliamentHelper.parliament_request.parliaments(params[:parliament_id]).constituencies },
-      a_to_z:  proc { |params| ParliamentHelper.parliament_request.parliaments(params[:parliament_id]).constituencies },
-      letters: proc { |params| ParliamentHelper.parliament_request.parliaments(params[:parliament_id]).constituencies(params[:letter]) }
+      index:   proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.parliaments(params[:parliament_id]).constituencies },
+      a_to_z:  proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.parliaments(params[:parliament_id]).constituencies },
+      letters: proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.parliaments(params[:parliament_id]).constituencies(params[:letter]) }
     }.freeze
 
     def index
-      @parliament, @constituencies, @letters = RequestHelper.filter_response_data(
+      @parliament, @constituencies, @letters = Parliament::Utils::Helpers::RequestHelper.filter_response_data(
         @request,
         'http://id.ukpds.org/schema/ParliamentPeriod',
         'http://id.ukpds.org/schema/ConstituencyGroup',
@@ -22,7 +22,7 @@ module Parliaments
     end
 
     def a_to_z
-      @parliament, @constituencies, @letters = RequestHelper.filter_response_data(
+      @parliament, @constituencies, @letters = Parliament::Utils::Helpers::RequestHelper.filter_response_data(
         @request,
         'http://id.ukpds.org/schema/ParliamentPeriod',
         'http://id.ukpds.org/schema/ConstituencyGroup',
@@ -35,7 +35,7 @@ module Parliaments
     end
 
     def letters
-      @parliament, @constituencies, @letters = RequestHelper.filter_response_data(
+      @parliament, @constituencies, @letters = Parliament::Utils::Helpers::RequestHelper.filter_response_data(
         @request,
         'http://id.ukpds.org/schema/ParliamentPeriod',
         'http://id.ukpds.org/schema/ConstituencyGroup',

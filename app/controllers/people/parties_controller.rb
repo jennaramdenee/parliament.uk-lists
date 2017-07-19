@@ -3,12 +3,12 @@ module People
     before_action :data_check, :build_request
 
     ROUTE_MAP = {
-      index:   proc { |params| ParliamentHelper.parliament_request.people(params[:person_id]).parties },
-      current: proc { |params| ParliamentHelper.parliament_request.people(params[:person_id]).parties.current }
+      index:   proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.people(params[:person_id]).parties },
+      current: proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.people(params[:person_id]).parties.current }
     }.freeze
 
     def index
-      @person, @party_memberships = RequestHelper.filter_response_data(
+      @person, @party_memberships = Parliament::Utils::Helpers::RequestHelper.filter_response_data(
         @request,
         'http://id.ukpds.org/schema/Person',
         'http://id.ukpds.org/schema/PartyMembership'
@@ -19,7 +19,7 @@ module People
     end
 
     def current
-      @person, @party = RequestHelper.filter_response_data(
+      @person, @party = Parliament::Utils::Helpers::RequestHelper.filter_response_data(
         @request,
         'http://id.ukpds.org/schema/Person',
         'http://id.ukpds.org/schema/Party'

@@ -22,6 +22,9 @@ gem 'parliament-opensearch', '~> 0.2', require: false
 # Parliament Grom Decorators decorates Grom nodes
 gem 'parliament-grom-decorators', '~> 0.2'
 
+# Parliament-Utils gem for generic set up and configuration
+gem 'parliament-utils', :path => '../parliament-utils', require: false
+
 # Parliament routing
 gem 'parliament-routes', '~> 0.1'
 
@@ -32,7 +35,8 @@ gem 'parliament-ntriple', '~> 0.1', require: false
 gem 'bandiera-client'
 
 # Use Pugin for front-end components and templates
-gem 'pugin', '~> 0.8'
+# gem 'pugin', '~> 0.8'
+gem 'pugin', :path => '../parliament.uk-pugin-components-ruby'
 
 # Use dotenv to override environment variables
 gem 'dotenv'

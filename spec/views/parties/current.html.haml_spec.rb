@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'parties/current', vcr: true do
   before do
-    allow(FlagHelper).to receive(:dissolution?).and_return(true)
+    allow(Parliament::Utils::Helpers::FlagHelper).to receive(:dissolution?).and_return(true)
     assign(:parties, [])
     assign(:letters, 'A')
     assign(:party_id, 'jF43Jxoc')

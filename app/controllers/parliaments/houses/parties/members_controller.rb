@@ -5,13 +5,13 @@ module Parliaments
         before_action :data_check, :build_request
 
         ROUTE_MAP = {
-          index:   proc { |params| ParliamentHelper.parliament_request.parliaments(params[:parliament_id]).houses(params[:house_id]).parties(params[:party_id]).members },
-          a_to_z:  proc { |params| ParliamentHelper.parliament_request.parliaments(params[:parliament_id]).houses(params[:house_id]).parties(params[:party_id]).members },
-          letters: proc { |params| ParliamentHelper.parliament_request.parliaments(params[:parliament_id]).houses(params[:house_id]).parties(params[:party_id]).members(params[:letter]) }
+          index:   proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.parliaments(params[:parliament_id]).houses(params[:house_id]).parties(params[:party_id]).members },
+          a_to_z:  proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.parliaments(params[:parliament_id]).houses(params[:house_id]).parties(params[:party_id]).members },
+          letters: proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.parliaments(params[:parliament_id]).houses(params[:house_id]).parties(params[:party_id]).members(params[:letter]) }
         }.freeze
 
         def index
-          @parliament, @house, @party, @people, @letters = RequestHelper.filter_response_data(
+          @parliament, @house, @party, @people, @letters = Parliament::Utils::Helpers::RequestHelper.filter_response_data(
             @request,
             'http://id.ukpds.org/schema/ParliamentPeriod',
             'http://id.ukpds.org/schema/House',
@@ -28,7 +28,7 @@ module Parliaments
         end
 
         def a_to_z
-          @parliament, @house, @party, @letters = RequestHelper.filter_response_data(
+          @parliament, @house, @party, @letters = Parliament::Utils::Helpers::RequestHelper.filter_response_data(
             @request,
             'http://id.ukpds.org/schema/ParliamentPeriod',
             'http://id.ukpds.org/schema/House',
@@ -43,7 +43,7 @@ module Parliaments
         end
 
         def letters
-          @parliament, @house, @party, @people, @letters = RequestHelper.filter_response_data(
+          @parliament, @house, @party, @people, @letters = Parliament::Utils::Helpers::RequestHelper.filter_response_data(
             @request,
             'http://id.ukpds.org/schema/ParliamentPeriod',
             'http://id.ukpds.org/schema/House',

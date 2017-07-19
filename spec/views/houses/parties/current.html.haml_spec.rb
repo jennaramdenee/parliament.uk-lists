@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'houses/parties/current', vcr: true do
   before do
-    allow(FlagHelper).to receive(:dissolution?).and_return(true)
+    allow(Parliament::Utils::Helpers::FlagHelper).to receive(:dissolution?).and_return(true)
     assign(:house, double(:house, name: 'House of Commons', graph_id: 'KL2k1BGP'))
     @parties = [double(:party, name: 'Conservative', graph_id: 'jF43Jxoc', member_count: 10)]
 

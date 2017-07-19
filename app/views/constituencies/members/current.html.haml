@@ -6,9 +6,9 @@
       = "#{l(@constituency.start_date, format: :default)}" unless @constituency.start_date.nil?
       = @constituency.current? ? " #{t('to_present')}" : " #{t('to')} #{l(@constituency.end_date, format: :default)}"
 
-    - if FlagHelper.dissolution?
+    - if Parliament::Utils::Helpers::FlagHelper.dissolution?
       = render partial: 'shared/dissolution_message'
-    - elsif FlagHelper.election?
+    - elsif Parliament::Utils::Helpers::FlagHelper.election?
       = render partial: 'shared/election_message'
 
 - unless @seat_incumbency.nil?
