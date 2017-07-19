@@ -4,7 +4,7 @@ RSpec.describe 'houses/members/current_letters', vcr: true do
 
   describe 'no dissolution' do
     before :each do
-      allow(FlagHelper).to receive(:dissolution?).and_return(true)
+      allow(Parliament::Utils::Helpers::FlagHelper).to receive(:dissolution?).and_return(true)
       assign(:house, double(:house, name: 'House of Commons', graph_id: 'cqIATgUK'))
       assign(:people, [])
       assign(:current_person_type, 'MPs')
@@ -47,7 +47,7 @@ RSpec.describe 'houses/members/current_letters', vcr: true do
 
   describe 'dissolution messaging' do
     before :each do
-      allow(FlagHelper).to receive(:dissolution?).and_return(false)
+      allow(Parliament::Utils::Helpers::FlagHelper).to receive(:dissolution?).and_return(false)
       assign(:house, double(:house, name: 'House of Commons', graph_id: 'cqIATgUK'))
       assign(:people, [])
       assign(:current_person_type, 'MPs')

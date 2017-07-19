@@ -11,10 +11,10 @@
         - if party.name === "Speaker"
           %p= "#{t('house_of_commons_speaker')}"
         - else
-          %p= "#{t('view_all').capitalize} #{t('current')} #{party.name} #{HousesHelper.commons?(@house) ? t('mp_plural') : t('lord_plural')}"
+          %p= "#{t('view_all').capitalize} #{t('current')} #{party.name} #{Parliament::Utils::Helpers::HousesHelper.commons?(@house) ? t('mp_plural') : t('lord_plural')}"
     .column--25
       .list--details
         %p
           = party.member_count
           %span
-            = HousesHelper.commons?(@house) ? t('mp_count', count: party.member_count) : t('lord_count', count: party.member_count)
+            = Parliament::Utils::Helpers::HousesHelper.commons?(@house) ? t('mp_count', count: party.member_count) : t('lord_count', count: party.member_count)

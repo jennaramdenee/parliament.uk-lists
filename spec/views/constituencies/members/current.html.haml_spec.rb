@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'constituencies/members/current', vcr: true do
   before(:each) do
-    allow(FlagHelper).to receive(:dissolution?).and_return(true)
+    allow(Parliament::Utils::Helpers::FlagHelper).to receive(:dissolution?).and_return(true)
   end
 
   context 'header' do

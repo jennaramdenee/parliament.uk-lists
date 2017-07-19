@@ -1,15 +1,15 @@
 class PeopleController < ApplicationController
-  before_action :data_check, :build_request, except: :postcode_lookup
+  before_action :data_check, :build_request
 
   ROUTE_MAP = {
-    index:             proc { ParliamentHelper.parliament_request.people },
-    letters:           proc { |params| ParliamentHelper.parliament_request.people(params[:letter]) },
-    a_to_z:            proc { ParliamentHelper.parliament_request.people.a_z_letters },
-    lookup_by_letters: proc { |params| ParliamentHelper.parliament_request.people.partial(params[:letters]) }
+    index:             proc { Parliament::Utils::Helpers::ParliamentHelper.parliament_request.people },
+    letters:           proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.people(params[:letter]) },
+    a_to_z:            proc { Parliament::Utils::Helpers::ParliamentHelper.parliament_request.people.a_z_letters },
+    lookup_by_letters: proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.people.partial(params[:letters]) }
   }.freeze
 
   def index
-    @people, @letters = RequestHelper.filter_response_data(
+    @people, @letters = Parliament::Utils::Helpers::RequestHelper.filter_response_data(
       @request,
       'http://id.ukpds.org/schema/Person',
       ::Grom::Node::BLANK
@@ -19,14 +19,8 @@ class PeopleController < ApplicationController
     @letters = @letters.map(&:value)
   end
 
-  def postcode_lookup
-    flash[:postcode] = params[:postcode]
-
-    redirect_to person_path(params[:person_id])
-  end
-
   def letters
-    @people, @letters = RequestHelper.filter_response_data(
+    @people, @letters = Parliament::Utils::Helpers::RequestHelper.filter_response_data(
       @request,
       'http://id.ukpds.org/schema/Person',
       ::Grom::Node::BLANK
@@ -37,11 +31,11 @@ class PeopleController < ApplicationController
   end
 
   def a_to_z
-    @letters = RequestHelper.process_available_letters(@request)
+    @letters = Parliament::Utils::Helpers::RequestHelper.process_available_letters(@request)
   end
 
   def lookup_by_letters
-    @people, @letters = RequestHelper.filter_response_data(
+    @people, @letters = Parliament::Utils::Helpers::RequestHelper.filter_response_data(
       @request,
       'http://id.ukpds.org/schema/Person',
       ::Grom::Node::BLANK

@@ -2,7 +2,7 @@ class ParliamentsController < ApplicationController
   before_action :data_check, :build_request
 
   ROUTE_MAP = {
-    index:               proc { ParliamentHelper.parliament_request.parliaments }
+    index:               proc { Parliament::Utils::Helpers::ParliamentHelper.parliament_request.parliaments }
   }.freeze
 
   def index

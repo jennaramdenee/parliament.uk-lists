@@ -3,16 +3,16 @@ module Parties
     before_action :data_check, :build_request
 
     ROUTE_MAP = {
-      index:           proc { |params| ParliamentHelper.parliament_request.parties(params[:party_id]).members },
-      current:         proc { |params| ParliamentHelper.parliament_request.parties(params[:party_id]).members.current },
-      letters:         proc { |params| ParliamentHelper.parliament_request.parties(params[:party_id]).members(params[:letter]) },
-      current_letters: proc { |params| ParliamentHelper.parliament_request.parties(params[:party_id]).members.current(params[:letter]) },
-      a_to_z:          proc { |params| ParliamentHelper.parliament_request.parties(params[:party_id]).members.a_z_letters },
-      a_to_z_current:  proc { |params| ParliamentHelper.parliament_request.parties(params[:party_id]).members.current.a_z_letters }
+      index:           proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.parties(params[:party_id]).members },
+      current:         proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.parties(params[:party_id]).members.current },
+      letters:         proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.parties(params[:party_id]).members(params[:letter]) },
+      current_letters: proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.parties(params[:party_id]).members.current(params[:letter]) },
+      a_to_z:          proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.parties(params[:party_id]).members.a_z_letters },
+      a_to_z_current:  proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.parties(params[:party_id]).members.current.a_z_letters }
     }.freeze
 
     def index
-      @party, @people, @letters = RequestHelper.filter_response_data(
+      @party, @people, @letters = Parliament::Utils::Helpers::RequestHelper.filter_response_data(
         @request,
         'http://id.ukpds.org/schema/Party',
         'http://id.ukpds.org/schema/Person',
@@ -25,7 +25,7 @@ module Parties
     end
 
     def current
-      @party, @people, @letters = RequestHelper.filter_response_data(
+      @party, @people, @letters = Parliament::Utils::Helpers::RequestHelper.filter_response_data(
         @request,
         'http://id.ukpds.org/schema/Party',
         'http://id.ukpds.org/schema/Person',
@@ -38,7 +38,7 @@ module Parties
     end
 
     def letters
-      @party, @people, @letters = RequestHelper.filter_response_data(
+      @party, @people, @letters = Parliament::Utils::Helpers::RequestHelper.filter_response_data(
         @request,
         'http://id.ukpds.org/schema/Party',
         'http://id.ukpds.org/schema/Person',
@@ -51,7 +51,7 @@ module Parties
     end
 
     def current_letters
-      @party, @people, @letters = RequestHelper.filter_response_data(
+      @party, @people, @letters = Parliament::Utils::Helpers::RequestHelper.filter_response_data(
         @request,
         'http://id.ukpds.org/schema/Party',
         'http://id.ukpds.org/schema/Person',
@@ -65,12 +65,12 @@ module Parties
 
     def a_to_z
       @party_id = params[:party_id]
-      @letters = RequestHelper.process_available_letters(@request)
+      @letters = Parliament::Utils::Helpers::RequestHelper.process_available_letters(@request)
     end
 
     def a_to_z_current
       @party_id = params[:party_id]
-      @letters = RequestHelper.process_available_letters(@request)
+      @letters = Parliament::Utils::Helpers::RequestHelper.process_available_letters(@request)
     end
   end
 end

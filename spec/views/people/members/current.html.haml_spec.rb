@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'people/members/current', vcr: true do
   before do
-    allow(FlagHelper).to receive(:dissolution?).and_return(true)
+    allow(Parliament::Utils::Helpers::FlagHelper).to receive(:dissolution?).and_return(true)
     assign(:people, [])
     assign(:letters, 'A')
     controller.params = { letter: 'a' }

@@ -2,17 +2,17 @@ class PartiesController < ApplicationController
   before_action :data_check, :build_request
 
   ROUTE_MAP = {
-    index:             proc { ParliamentHelper.parliament_request.parties },
-    show:              proc { |params| ParliamentHelper.parliament_request.parties(params[:party_id]) },
-    lookup:            proc { |params| ParliamentHelper.parliament_request.parties.lookup(params[:source], params[:id]) },
-    current:           proc { ParliamentHelper.parliament_request.parties.current },
-    letters:           proc { |params| ParliamentHelper.parliament_request.parties(params[:letter]) },
-    a_to_z:            proc { ParliamentHelper.parliament_request.parties.a_z_letters },
-    lookup_by_letters: proc { |params| ParliamentHelper.parliament_request.parties.partial(params[:letters]) }
+    index:             proc { Parliament::Utils::Helpers::ParliamentHelper.parliament_request.parties },
+    show:              proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.parties(params[:party_id]) },
+    lookup:            proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.parties.lookup(params[:source], params[:id]) },
+    current:           proc { Parliament::Utils::Helpers::ParliamentHelper.parliament_request.parties.current },
+    letters:           proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.parties(params[:letter]) },
+    a_to_z:            proc { Parliament::Utils::Helpers::ParliamentHelper.parliament_request.parties.a_z_letters },
+    lookup_by_letters: proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.parties.partial(params[:letters]) }
   }.freeze
 
   def index
-    @parties, @letters = RequestHelper.filter_response_data(
+    @parties, @letters = Parliament::Utils::Helpers::RequestHelper.filter_response_data(
       @request,
       'http://id.ukpds.org/schema/Party',
       ::Grom::Node::BLANK
@@ -33,14 +33,14 @@ class PartiesController < ApplicationController
   end
 
   def current
-    @parties = RequestHelper.filter_response_data(
+    @parties = Parliament::Utils::Helpers::RequestHelper.filter_response_data(
       @request,
       'http://id.ukpds.org/schema/Party'
     ).sort_by(:name)
   end
 
   def letters
-    @parties, @letters = RequestHelper.filter_response_data(
+    @parties, @letters = Parliament::Utils::Helpers::RequestHelper.filter_response_data(
       @request,
       'http://id.ukpds.org/schema/Party',
       ::Grom::Node::BLANK
@@ -51,11 +51,11 @@ class PartiesController < ApplicationController
   end
 
   def a_to_z
-    @letters = RequestHelper.process_available_letters(ROUTE_MAP[:a_to_z].call)
+    @letters = Parliament::Utils::Helpers::RequestHelper.process_available_letters(ROUTE_MAP[:a_to_z].call)
   end
 
   def lookup_by_letters
-    @parties, @letters = RequestHelper.filter_response_data(
+    @parties, @letters = Parliament::Utils::Helpers::RequestHelper.filter_response_data(
       @request,
       'http://id.ukpds.org/schema/Party',
       ::Grom::Node::BLANK

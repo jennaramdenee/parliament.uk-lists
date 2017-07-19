@@ -3,32 +3,32 @@
 #content.section--primary
   .container
 
-    %h1= "#{t('current').capitalize} #{HousesHelper.commons?(@house) ? t('party_plural') : t('parties_and_groups')}"
+    %h1= "#{t('current').capitalize} #{Parliament::Utils::Helpers::HousesHelper.commons?(@house) ? t('party_plural') : t('parties_and_groups')}"
 
 %section
   .container
 
     %ul.list--tab
-      - if HousesHelper.commons?(@house)
+      - if Parliament::Utils::Helpers::HousesHelper.commons?(@house)
         %li.active
           = t('commons')
       - else
         %li
-          = link_to(t('commons'),house_parties_current_path(HousesHelper.commons_id))
-      - if HousesHelper.lords?(@house)
+          = link_to(t('commons'),house_parties_current_path(Parliament::Utils::Helpers::HousesHelper.commons_id))
+      - if Parliament::Utils::Helpers::HousesHelper.lords?(@house)
         %li.active
           = t('lords')
       - else
         %li
-          = link_to(t('lords'),house_parties_current_path(HousesHelper.lords_id))
+          = link_to(t('lords'),house_parties_current_path(Parliament::Utils::Helpers::HousesHelper.lords_id))
 
-    - if HousesHelper.commons?(@house)
-      - if FlagHelper.dissolution?
+    - if Parliament::Utils::Helpers::HousesHelper.commons?(@house)
+      - if Parliament::Utils::Helpers::FlagHelper.dissolution?
         = render partial: 'shared/dissolution_message'
-      - elsif FlagHelper.election?
+      - elsif Parliament::Utils::Helpers::FlagHelper.election?
         = render partial: 'shared/election_message'
-    - if HousesHelper.commons?(@house)
-      - if FlagHelper.post_election?
+    - if Parliament::Utils::Helpers::HousesHelper.commons?(@house)
+      - if Parliament::Utils::Helpers::FlagHelper.post_election?
         = render partial: 'shared/election_message'
 
     %ol.list--box
