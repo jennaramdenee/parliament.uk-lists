@@ -3,7 +3,6 @@ class ContactPointsController < ApplicationController
 
   ROUTE_MAP = {
     index: proc { Parliament::Utils::Helpers::ParliamentHelper.parliament_request.contact_points },
-    show:  proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.contact_points(params[:contact_point_id]) }
   }.freeze
 
   def index
