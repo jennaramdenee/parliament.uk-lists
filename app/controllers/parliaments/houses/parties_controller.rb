@@ -4,7 +4,10 @@ module Parliaments
       before_action :data_check, :build_request
 
       ROUTE_MAP = {
-        index: proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.parliaments(params[:parliament_id]).houses(params[:house_id]).parties }
+        index: proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.parliaments(params[:parliament_id]).houses(params[:house_id]).parties },
+
+        # New Data API URL structure
+        # index: proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.parliament_house_parties.set_url_params({ parliament_id: params[:parliament_id], house_id: params[:house_id] }) },
       }.freeze
 
       def index

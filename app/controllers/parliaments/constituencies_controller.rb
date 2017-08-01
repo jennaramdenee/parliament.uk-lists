@@ -6,6 +6,11 @@ module Parliaments
       index:   proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.parliaments(params[:parliament_id]).constituencies },
       a_to_z:  proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.parliaments(params[:parliament_id]).constituencies },
       letters: proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.parliaments(params[:parliament_id]).constituencies(params[:letter]) }
+
+      # New Data API URL structure
+      # index:   proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.parliament_constituencies.set_url_params({ parliament_id: params[:parliament_id] }) },
+      # a_to_z:  proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.parliament_constituencies.set_url_params({ parliament_id: params[:parliament_id] }) },
+      # letters: proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.parliament_constituencies_by_initial.set_url_params({ parliament_id: params[:parliament_id], initial: params[:letter] }) }
     }.freeze
 
     def index

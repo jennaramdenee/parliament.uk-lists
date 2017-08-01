@@ -9,6 +9,14 @@ module People
       current_letters: proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.people.members.current(params[:letter]) },
       a_to_z:          proc { Parliament::Utils::Helpers::ParliamentHelper.parliament_request.people.members.a_z_letters },
       a_to_z_current:  proc { Parliament::Utils::Helpers::ParliamentHelper.parliament_request.people.members.current.a_z_letters }
+
+      # New Data API URL structure
+      # index:           proc { Parliament::Utils::Helpers::ParliamentHelper.parliament_request.member_index },
+      # current:         proc { Parliament::Utils::Helpers::ParliamentHelper.parliament_request.member_current },
+      # letters:         proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.member_by_initial.set_url_params({ initial: params[:letter] }) },
+      # current_letters: proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.member_current_by_initial.set_url_params({ initial: params[:letter] }) },
+      # a_to_z:          proc { Parliament::Utils::Helpers::ParliamentHelper.parliament_request.member_a_to_z },
+      # a_to_z_current:  proc { Parliament::Utils::Helpers::ParliamentHelper.parliament_request.member_current_a_to_z }
     }.freeze
 
     def index

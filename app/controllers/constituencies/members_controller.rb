@@ -5,6 +5,10 @@ module Constituencies
     ROUTE_MAP = {
       index:   proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.constituencies(params[:constituency_id]).members },
       current: proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.constituencies(params[:constituency_id]).members.current }
+
+      # New Data API URL structure
+      # index:   proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.constituency_members.set_url_params({ constituency_id: params[:constituency_id] }) },
+      # current: proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.constituency_current_member.set_url_params({ constituency_id: params[:constituency_id] }) }
     }.freeze
 
     def index
@@ -23,7 +27,7 @@ module Constituencies
     # @controller_action_param :constituency_id [String] 8 character identifier that identifies constituency in graph database.
     # @return [Grom::Node] object with type 'http://id.ukpds.org/schema/ConstituencyGroup'.
     # @return [Grom::Node] object with type 'http://id.ukpds.org/schema/SeatIncumbency'.
-    
+
     def current
       @constituency, @seat_incumbency = Parliament::Utils::Helpers::RequestHelper.filter_response_data(
         @request,
