@@ -4,7 +4,7 @@ RSpec.describe Parliaments::HousesController, vcr: true do
 
   describe 'GET index' do
     before(:each) do
-      get :index, params: { parliament_id: '0FxbTVtr' }
+      get :index, params: { parliament_id: 'fHx6P1lb' }
     end
 
     it 'should have a response with http status ok (200)'do
@@ -37,8 +37,8 @@ RSpec.describe Parliaments::HousesController, vcr: true do
       methods = [
           {
             route: 'index',
-            parameters: { parliament_id: '0FxbTVtr' },
-            data_url: "#{ENV['PARLIAMENT_BASE_URL']}/parliaments/0FxbTVtr/houses"
+            parameters: { parliament_id: 'fHx6P1lb' },
+            data_url: "#{ENV['PARLIAMENT_BASE_URL']}/parliament_houses?parliament_id=fHx6P1lb"
           }
         ]
 

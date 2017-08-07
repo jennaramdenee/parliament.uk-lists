@@ -3,10 +3,7 @@ module Constituencies
     before_action :data_check, :build_request
 
     ROUTE_MAP = {
-      index: proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.constituencies(params[:constituency_id]).contact_point }
-
-      # New Data API URL structure
-      # index: proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.constituency_contact_point.set_url_params({ constituency_id: params[:constituency_id] }) }
+      index: proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.constituency_contact_point.set_url_params({ constituency_id: params[:constituency_id] }) }
     }.freeze
 
     # Renders a contact point given a constituency id.

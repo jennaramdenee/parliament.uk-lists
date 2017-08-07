@@ -117,7 +117,7 @@ RSpec.describe PeopleController, vcr: true do
       end
 
       it 'redirects to people/:id' do
-        expect(response).to redirect_to(person_path('SmopkDY2'))
+        expect(response).to redirect_to(person_path('PjRtyVbi'))
       end
     end
   end
@@ -127,21 +127,21 @@ RSpec.describe PeopleController, vcr: true do
       methods = [
           {
             route: 'index',
-            data_url: "#{ENV['PARLIAMENT_BASE_URL']}/people"
+            data_url: "#{ENV['PARLIAMENT_BASE_URL']}/person_index"
           },
           {
             route: 'letters',
             parameters: { letter: 'l' },
-            data_url: "#{ENV['PARLIAMENT_BASE_URL']}/people/l"
+            data_url: "#{ENV['PARLIAMENT_BASE_URL']}/person_by_initial?initial=l"
           },
           {
             route: 'a_to_z',
-            data_url: "#{ENV['PARLIAMENT_BASE_URL']}/people/a_z_letters"
+            data_url: "#{ENV['PARLIAMENT_BASE_URL']}/person_a_to_z"
           },
           {
             route: 'lookup_by_letters',
             parameters: { letters: 'creasy' },
-            data_url: "#{ENV['PARLIAMENT_BASE_URL']}/people/partial/creasy"
+            data_url: "#{ENV['PARLIAMENT_BASE_URL']}/person_by_substring?substring=creasy"
           }
         ]
 

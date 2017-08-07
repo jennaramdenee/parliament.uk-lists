@@ -2,16 +2,10 @@ class PeopleController < ApplicationController
   before_action :data_check, :build_request, except: :postcode_lookup
 
   ROUTE_MAP = {
-    index:             proc { Parliament::Utils::Helpers::ParliamentHelper.parliament_request.people },
-    letters:           proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.people(params[:letter]) },
-    a_to_z:            proc { Parliament::Utils::Helpers::ParliamentHelper.parliament_request.people.a_z_letters },
-    lookup_by_letters: proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.people.partial(params[:letters]) }
-
-    # New Data API URL structure
-    # index:             proc { Parliament::Utils::Helpers::ParliamentHelper.parliament_request.person_index },
-    # letters:           proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.person_by_initial.set_url_params({ initial: params[:letter] }) },
-    # a_to_z:            proc { Parliament::Utils::Helpers::ParliamentHelper.parliament_request.person_a_to_z },
-    # lookup_by_letters: proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.person_by_substring.set_url_params({ substring: params[:letters] }) }
+    index:             proc { Parliament::Utils::Helpers::ParliamentHelper.parliament_request.person_index },
+    letters:           proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.person_by_initial.set_url_params({ initial: params[:letter] }) },
+    a_to_z:            proc { Parliament::Utils::Helpers::ParliamentHelper.parliament_request.person_a_to_z },
+    lookup_by_letters: proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.person_by_substring.set_url_params({ substring: params[:letters] }) }
   }.freeze
 
   def index

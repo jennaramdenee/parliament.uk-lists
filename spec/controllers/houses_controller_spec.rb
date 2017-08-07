@@ -19,8 +19,8 @@ RSpec.describe HousesController, vcr: true do
     end
 
     it 'assigns @houses in alphabetical order' do
-      expect(assigns(:houses)[0].name).to eq('House of Commons')
-      expect(assigns(:houses)[1].name).to eq('House of Lords')
+      expect(assigns(:houses)[0].name).to eq('houseName - 1')
+      expect(assigns(:houses)[1].name).to eq('houseName - 2')
     end
 
     it 'renders the index template' do
@@ -53,7 +53,7 @@ RSpec.describe HousesController, vcr: true do
       end
 
       it 'redirects to houses/:id' do
-        expect(response).to redirect_to(house_path('cqIATgUK'))
+        expect(response).to redirect_to(house_path('Kz7ncmrt'))
       end
     end
   end
@@ -63,12 +63,12 @@ RSpec.describe HousesController, vcr: true do
       methods = [
           {
             route: 'index',
-            data_url: "#{ENV['PARLIAMENT_BASE_URL']}/houses"
+            data_url: "#{ENV['PARLIAMENT_BASE_URL']}/house_index"
           },
           {
             route: 'lookup_by_letters',
             parameters: { letters: 'labour' },
-            data_url: "#{ENV['PARLIAMENT_BASE_URL']}/houses/partial/labour"
+            data_url: "#{ENV['PARLIAMENT_BASE_URL']}/house_by_substring?substring=labour"
           }
         ]
 

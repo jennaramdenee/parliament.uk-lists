@@ -2,10 +2,7 @@ class ParliamentsController < ApplicationController
   before_action :data_check, :build_request
 
   ROUTE_MAP = {
-    index:               proc { Parliament::Utils::Helpers::ParliamentHelper.parliament_request.parliaments },
-
-    # New Data API URL structure
-    # index:               proc { Parliament::Utils::Helpers::ParliamentHelper.parliament_request.parliament_index },
+    index:               proc { Parliament::Utils::Helpers::ParliamentHelper.parliament_request.parliament_index },
   }.freeze
 
   def index

@@ -39,7 +39,7 @@ RSpec.describe PartiesController, vcr: true do
     end
 
     it 'should return the current number of parties' do
-      expect(assigns(:parties).size).to eq(14)
+      expect(assigns(:parties).size).to eq(18)
     end
 
     it 'assigns @parties' do
@@ -147,7 +147,7 @@ RSpec.describe PartiesController, vcr: true do
 
     context 'it returns a single result' do
       before(:each) do
-        get :lookup_by_letters, params: { letters: 'guildford' }
+        get :lookup_by_letters, params: { letters: 'lock' }
       end
 
       it 'should have a response with http status redirect (302)' do
@@ -155,7 +155,7 @@ RSpec.describe PartiesController, vcr: true do
       end
 
       it 'redirects to people/:id' do
-        expect(response).to redirect_to(party_path('CwHG1QXZ'))
+        expect(response).to redirect_to(party_path('6zqf0pPb'))
       end
     end
   end
@@ -165,25 +165,25 @@ RSpec.describe PartiesController, vcr: true do
       methods = [
           {
             route: 'index',
-            data_url: "#{ENV['PARLIAMENT_BASE_URL']}/parties"
+            data_url: "#{ENV['PARLIAMENT_BASE_URL']}/party_index"
           },
           {
             route: 'current',
-            data_url: "#{ENV['PARLIAMENT_BASE_URL']}/parties/current"
+            data_url: "#{ENV['PARLIAMENT_BASE_URL']}/party_current"
           },
           {
             route: 'letters',
             parameters: { letter: 'l' },
-            data_url: "#{ENV['PARLIAMENT_BASE_URL']}/parties/l"
+            data_url: "#{ENV['PARLIAMENT_BASE_URL']}/party_by_initial?initial=l"
           },
           {
             route: 'a_to_z',
-            data_url: "#{ENV['PARLIAMENT_BASE_URL']}/parties/a_z_letters"
+            data_url: "#{ENV['PARLIAMENT_BASE_URL']}/party_a_to_z"
           },
           {
             route: 'lookup_by_letters',
             parameters: { letters: 'labour' },
-            data_url: "#{ENV['PARLIAMENT_BASE_URL']}/parties/partial/labour"
+            data_url: "#{ENV['PARLIAMENT_BASE_URL']}/party_by_substring?substring=labour"
           }
         ]
 

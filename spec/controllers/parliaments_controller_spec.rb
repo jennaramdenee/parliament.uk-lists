@@ -32,7 +32,7 @@ RSpec.describe ParliamentsController, vcr: true do
       methods = [
           {
             route: 'index',
-            data_url: "#{ENV['PARLIAMENT_BASE_URL']}/parliaments"
+            data_url: "#{ENV['PARLIAMENT_BASE_URL']}/parliament_index"
           }
         ]
 

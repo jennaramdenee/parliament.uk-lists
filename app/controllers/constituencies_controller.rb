@@ -2,22 +2,13 @@ class ConstituenciesController < ApplicationController
   before_action :data_check, :build_request, except: :postcode_lookup
 
   ROUTE_MAP = {
-    index:             proc { Parliament::Utils::Helpers::ParliamentHelper.parliament_request.constituencies },
-    current:           proc { Parliament::Utils::Helpers::ParliamentHelper.parliament_request.constituencies.current },
-    letters:           proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.constituencies(params[:letter]) },
-    current_letters:   proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.constituencies.current(params[:letter]) },
-    a_to_z:            proc { Parliament::Utils::Helpers::ParliamentHelper.parliament_request.constituencies.a_z_letters }
-    a_to_z_current:    proc { Parliament::Utils::Helpers::ParliamentHelper.parliament_request.constituencies.current.a_z_letters },
-    lookup_by_letters: proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.constituencies.partial(params[:letters]) },
-
-    # New Data API URL structure
-    # index:             proc { Parliament::Utils::Helpers::ParliamentHelper.parliament_request.constituency_index },
-    # current:           proc { Parliament::Utils::Helpers::ParliamentHelper.parliament_request.constituency_current },
-    # letters:           proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.constituency_by_initial.set_url_params({ initial: params[:letter] }) },
-    # current_letters:   proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.constituency_current_by_initial.set_url_params({ initial: params[:letter] }) },
-    # a_to_z:            proc { Parliament::Utils::Helpers::ParliamentHelper.parliament_request.constituency_a_to_z }
-    # a_to_z_current:    proc { Parliament::Utils::Helpers::ParliamentHelper.parliament_request.constituency_current_a_to_z },
-    # lookup_by_letters: proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.constituency_by_substring.set_url_params({ substring: params[:letters] }) },
+    index:             proc { Parliament::Utils::Helpers::ParliamentHelper.parliament_request.constituency_index },
+    current:           proc { Parliament::Utils::Helpers::ParliamentHelper.parliament_request.constituency_current },
+    letters:           proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.constituency_by_initial.set_url_params({ initial: params[:letter] }) },
+    current_letters:   proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.constituency_current_by_initial.set_url_params({ initial: params[:letter] }) },
+    a_to_z:            proc { Parliament::Utils::Helpers::ParliamentHelper.parliament_request.constituency_a_to_z },
+    a_to_z_current:    proc { Parliament::Utils::Helpers::ParliamentHelper.parliament_request.constituency_current_a_to_z },
+    lookup_by_letters: proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.constituency_by_substring.set_url_params({ substring: params[:letters] }) }
   }.freeze
 
   # Renders a list of all constituencies with current incumbents and sorted in ascending order by name from a GET request. Shown with an a - z partial view.

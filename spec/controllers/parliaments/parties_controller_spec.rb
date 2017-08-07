@@ -4,7 +4,7 @@ RSpec.describe Parliaments::PartiesController, vcr: true do
 
   describe 'GET index' do
     before(:each) do
-      get :index, params: { parliament_id: 'GEFMX81E' }
+      get :index, params: { parliament_id: 'fHx6P1lb' }
     end
 
     it 'should have a response with http status ok (200)' do
@@ -27,15 +27,15 @@ RSpec.describe Parliaments::PartiesController, vcr: true do
       end
 
       it 'assigns @parties in member count then name order' do
-        expect(assigns(:parties)[0].name).to eq('partyName - 11')
-        expect(assigns(:parties)[0].member_count).to eq(333)
-        expect(assigns(:parties)[1].name).to eq('partyName - 1')
-        expect(assigns(:parties)[1].member_count).to eq(240)
-        expect(assigns(:parties)[10].name).to eq('partyName - 3')
+        expect(assigns(:parties)[0].name).to eq('partyName - 2')
+        expect(assigns(:parties)[0].member_count).to eq(309)
+        expect(assigns(:parties)[1].name).to eq('partyName - 14')
+        expect(assigns(:parties)[1].member_count).to eq(273)
+        expect(assigns(:parties)[10].name).to eq('partyName - 10')
         expect(assigns(:parties)[10].member_count).to eq(1)
-        expect(assigns(:parties)[11].name).to eq('partyName - 4')
+        expect(assigns(:parties)[11].name).to eq('partyName - 12')
         expect(assigns(:parties)[11].member_count).to eq(1)
-        expect(assigns(:parties)[12].name).to eq('partyName - 7')
+        expect(assigns(:parties)[12].name).to eq('partyName - 5')
         expect(assigns(:parties)[12].member_count).to eq(1)
       end
     end
@@ -50,8 +50,8 @@ RSpec.describe Parliaments::PartiesController, vcr: true do
       methods = [
           {
             route: 'index',
-            parameters: { parliament_id: '0FxbTVtr' },
-            data_url: "#{ENV['PARLIAMENT_BASE_URL']}/parliaments/0FxbTVtr/parties"
+            parameters: { parliament_id: 'fHx6P1lb' },
+            data_url: "#{ENV['PARLIAMENT_BASE_URL']}/parliament_parties?parliament_id=fHx6P1lb"
           }
         ]
 

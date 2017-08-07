@@ -30,34 +30,6 @@ RSpec.describe ConstituenciesController, vcr: true do
     end
   end
 
-  describe 'GET current' do
-    before(:each) do
-      get :current
-    end
-
-    it 'should have a response with http status ok (200)' do
-      expect(response).to have_http_status(:ok)
-    end
-
-    it 'assigns @constituencies and @letters' do
-      assigns(:constituencies).each do |constituency|
-        expect(constituency).to be_a(Grom::Node)
-        expect(constituency.type).to eq('http://id.ukpds.org/schema/ConstituencyGroup')
-      end
-
-      expect(assigns(:letters)).to be_a(Array)
-    end
-
-    it 'assigns @constituencies in alphabetical order' do
-      expect(assigns(:constituencies)[0].name).to eq('constituencyGroupName - 1')
-      expect(assigns(:constituencies)[1].name).to eq('constituencyGroupName - 10')
-    end
-
-    it 'renders the current template' do
-      expect(response).to render_template('current')
-    end
-  end
-
   describe 'GET letters' do
     context 'returns a response' do
       before(:each) do
@@ -208,7 +180,7 @@ RSpec.describe ConstituenciesController, vcr: true do
 
     context 'it returns a single result' do
       before(:each) do
-        get :lookup_by_letters, params: { letters: 'arfon' }
+        get :lookup_by_letters, params: { letters: 'hove' }
       end
 
       it 'should have a response with http status redirect (302)' do
@@ -216,7 +188,7 @@ RSpec.describe ConstituenciesController, vcr: true do
       end
 
       it 'redirects to constituencies/:id' do
-        expect(response).to redirect_to(constituency_path('HWhM7sev'))
+        expect(response).to redirect_to(constituency_path('JGl1V427'))
       end
     end
   end
@@ -224,38 +196,38 @@ RSpec.describe ConstituenciesController, vcr: true do
   describe '#data_check' do
     context 'an available data format is requested' do
       METHODS = [
-          {
-            route: 'index',
-            data_url: "#{ENV['PARLIAMENT_BASE_URL']}/constituencies"
-          },
-          {
-            route: 'lookup_by_letters',
-            parameters: { letters: 'epping' },
-            data_url: "#{ENV['PARLIAMENT_BASE_URL']}/constituencies/partial/epping"
-          },
-          {
-            route: 'a_to_z_current',
-            data_url: "#{ENV['PARLIAMENT_BASE_URL']}/constituencies/current/a_z_letters"
-          },
-          {
-            route: 'current',
-            data_url: "#{ENV['PARLIAMENT_BASE_URL']}/constituencies/current"
-          },
-          {
-            route: 'letters',
-            parameters: { letter: 'p' },
-            data_url: "#{ENV['PARLIAMENT_BASE_URL']}/constituencies/p"
-          },
-          {
-            route: 'current_letters',
-            parameters: { letter: 'p' },
-            data_url: "#{ENV['PARLIAMENT_BASE_URL']}/constituencies/current/p"
-          },
-          {
-            route: 'a_to_z',
-            data_url: "#{ENV['PARLIAMENT_BASE_URL']}/constituencies/a_z_letters"
-          },
-        ]
+        {
+          route: 'index',
+          data_url: "#{ENV['PARLIAMENT_BASE_URL']}/constituency_index"
+        },
+        {
+          route: 'lookup_by_letters',
+          parameters: { letters: 'epping' },
+          data_url: "#{ENV['PARLIAMENT_BASE_URL']}/constituency_by_substring?substring=epping"
+        },
+        {
+          route: 'a_to_z_current',
+          data_url: "#{ENV['PARLIAMENT_BASE_URL']}/constituency_current_a_to_z"
+        },
+        {
+          route: 'current',
+          data_url: "#{ENV['PARLIAMENT_BASE_URL']}/constituency_current"
+        },
+        {
+          route: 'letters',
+          parameters: { letter: 'p' },
+          data_url: "#{ENV['PARLIAMENT_BASE_URL']}/constituency_by_initial?initial=p"
+        },
+        {
+          route: 'current_letters',
+          parameters: { letter: 'p' },
+          data_url: "#{ENV['PARLIAMENT_BASE_URL']}/constituency_current_by_initial?initial=p"
+        },
+        {
+          route: 'a_to_z',
+          data_url: "#{ENV['PARLIAMENT_BASE_URL']}/constituency_a_to_z"
+        },
+      ]
 
       before(:each) do
         headers = { 'Accept' => 'application/rdf+xml' }
@@ -297,5 +269,5 @@ RSpec.describe ConstituenciesController, vcr: true do
       end
     end
   end
-
+  
 end

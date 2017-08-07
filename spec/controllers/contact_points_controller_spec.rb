@@ -28,7 +28,7 @@ RSpec.describe ContactPointsController, vcr: true do
       methods = [
         {
           route: 'index',
-          data_url: "#{ENV['PARLIAMENT_BASE_URL']}/contact_points"
+          data_url: "#{ENV['PARLIAMENT_BASE_URL']}/contact_point_index"
         }
       ]
 
@@ -61,5 +61,4 @@ RSpec.describe ContactPointsController, vcr: true do
 
     end
   end
-
 end

@@ -3,20 +3,12 @@ module Houses
     before_action :data_check, :build_request
 
     ROUTE_MAP = {
-      index:           proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.houses(params[:house_id]).members },
-      a_to_z_current:  proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.houses(params[:house_id]).members.current.a_z_letters },
-      current:         proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.houses(params[:house_id]).members.current },
-      letters:         proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.houses(params[:house_id]).members(params[:letter]) },
-      current_letters: proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.houses(params[:house_id]).members.current(params[:letter]) },
-      a_to_z:          proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.houses(params[:house_id]).members.a_z_letters }
-
-      # New Data API URL structure
-      # index:           proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.house_members.set_url_params({ house_id: params[:house_id] }) },
-      # a_to_z_current:  proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.house_current_members_a_to_z.set_url_params({ house_id: params[:house_id] }) },
-      # current:         proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.house_current_members.set_url_params({ house_id: params[:house_id] }) },
-      # letters:         proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.house_members_by_initial.set_url_params({ house_id: params[:house_id], initial: params[:letter] }) },
-      # current_letters: proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.house_current_members_by_initial.set_url_params({ house_id: params[:house_id], initial: params[:letter] }) },
-      # a_to_z:          proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.house_members_a_to_z.set_url_params({ house_id: params[:house_id] }) }
+      index:           proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.house_members.set_url_params({ house_id: params[:house_id] }) },
+      a_to_z_current:  proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.house_current_members_a_to_z.set_url_params({ house_id: params[:house_id] }) },
+      current:         proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.house_current_members.set_url_params({ house_id: params[:house_id] }) },
+      letters:         proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.house_members_by_initial.set_url_params({ house_id: params[:house_id], initial: params[:letter] }) },
+      current_letters: proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.house_current_members_by_initial.set_url_params({ house_id: params[:house_id], initial: params[:letter] }) },
+      a_to_z:          proc { |params| Parliament::Utils::Helpers::ParliamentHelper.parliament_request.house_members_a_to_z.set_url_params({ house_id: params[:house_id] }) }
     }.freeze
 
     def index
