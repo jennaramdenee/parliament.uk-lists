@@ -135,6 +135,11 @@ RSpec.describe Parties::MembersController, vcr: true do
       expect(assigns(:letters)).to be_a(Array)
     end
 
+    it 'assigns @party' do
+      expect(assigns(:party)).to be_a(Grom::Node)
+      expect(assigns(:party).type).to eq('http://id.ukpds.org/schema/Party')
+    end
+
     it 'renders the a_to_z_members template' do
       expect(response).to render_template('a_to_z')
     end
@@ -151,6 +156,11 @@ RSpec.describe Parties::MembersController, vcr: true do
 
     it 'assigns @letters' do
       expect(assigns(:letters)).to be_a(Array)
+    end
+
+    it 'assigns @party' do
+      expect(assigns(:party)).to be_a(Grom::Node)
+      expect(assigns(:party).type).to eq('http://id.ukpds.org/schema/Party')
     end
 
     it 'renders the a_to_z_current_members template' do

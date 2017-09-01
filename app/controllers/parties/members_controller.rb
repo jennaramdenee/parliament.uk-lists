@@ -66,14 +66,28 @@ module Parties
     end
 
     def a_to_z
+      @party, @letters = Parliament::Utils::Helpers::RequestHelper.filter_response_data(
+        @request,
+        'http://id.ukpds.org/schema/Party',
+        ::Grom::Node::BLANK
+      )
+
+      @party = @party.first
       @party_id = params[:party_id]
-      @letters = Parliament::Utils::Helpers::RequestHelper.process_available_letters(@request)
+      @letters = @letters.map(&:value)
       @all_path = :party_members_path
     end
 
     def a_to_z_current
+      @party, @letters = Parliament::Utils::Helpers::RequestHelper.filter_response_data(
+        @request,
+        'http://id.ukpds.org/schema/Party',
+        ::Grom::Node::BLANK
+      )
+
+      @party = @party.first
       @party_id = params[:party_id]
-      @letters = Parliament::Utils::Helpers::RequestHelper.process_available_letters(@request)
+      @letters = @letters.map(&:value)
       @all_path = :party_members_current_path
     end
   end

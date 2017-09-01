@@ -148,6 +148,11 @@ RSpec.describe Houses::MembersController, vcr: true do
       expect(assigns(:letters)).to be_a(Array)
     end
 
+    it 'assigns @house' do
+      expect(assigns(:house)).to be_a(Grom::Node)
+      expect(assigns(:house).type).to eq('http://id.ukpds.org/schema/House')
+    end
+
     it 'renders the a_to_z_members template' do
       expect(response).to render_template('a_to_z')
     end
@@ -164,6 +169,11 @@ RSpec.describe Houses::MembersController, vcr: true do
 
     it 'assigns @letters' do
       expect(assigns(:letters)).to be_a(Array)
+    end
+
+    it 'assigns @house' do
+      expect(assigns(:house)).to be_a(Grom::Node)
+      expect(assigns(:house).type).to eq('http://id.ukpds.org/schema/House')
     end
 
     it 'renders the a_to_z_current_members template' do

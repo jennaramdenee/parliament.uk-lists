@@ -77,18 +77,34 @@ module Houses
       end
 
       def a_to_z
-        @house_id = params[:house_id]
-        @party_id = params[:party_id]
+        @house, @party, @letters = Parliament::Utils::Helpers::RequestHelper.filter_response_data(
+          @request,
+          'http://id.ukpds.org/schema/House',
+          'http://id.ukpds.org/schema/Party',
+          ::Grom::Node::BLANK
+        )
 
-        @letters = Parliament::Utils::Helpers::RequestHelper.process_available_letters(ROUTE_MAP[:a_to_z].call(params))
+        @house = @house.first
+        @house_id = params[:house_id]
+        @party = @party.first
+        @party_id = params[:party_id]
+        @letters = @letters.map(&:value)
         @all_path = :house_parties_party_members_path
       end
 
       def a_to_z_current
-        @house_id = params[:house_id]
-        @party_id = params[:party_id]
+        @house, @party, @letters = Parliament::Utils::Helpers::RequestHelper.filter_response_data(
+          @request,
+          'http://id.ukpds.org/schema/House',
+          'http://id.ukpds.org/schema/Party',
+          ::Grom::Node::BLANK
+        )
 
-        @letters = Parliament::Utils::Helpers::RequestHelper.process_available_letters(ROUTE_MAP[:a_to_z_current].call(params))
+        @house = @house.first
+        @house_id = params[:house_id]
+        @party = @party.first
+        @party_id = params[:party_id]
+        @letters = @letters.map(&:value)
         @all_path = :house_parties_party_members_current_path
       end
     end

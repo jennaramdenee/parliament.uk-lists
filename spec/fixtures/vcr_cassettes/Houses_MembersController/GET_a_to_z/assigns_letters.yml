@@ -22,47 +22,50 @@ http_interactions:
       message: OK
     headers:
       Cache-Control:
-      - no-cache
-      Pragma:
-      - no-cache
+      - public, must-revalidate, max-age=251
       Content-Length:
-      - '1461'
+      - '1672'
       Content-Type:
       - application/n-triples
       Expires:
-      - "-1"
-      Server:
-      - Microsoft-IIS/8.0
+      - Fri, 01 Sep 2017 13:25:04 GMT
+      Last-Modified:
+      - Fri, 01 Sep 2017 12:55:04 GMT
+      Vary:
+      - Accept,Accept-Charset
+      Set-Cookie:
+      - ARRAffinity=2bc84f7540cae9fa0e13ee9b377da85ae072e0086c414b5b16e61e8788fd31c6;Path=/;HttpOnly;Domain=fixedquery201706210753.azurewebsites.net
       X-Aspnet-Version:
       - 4.0.30319
       X-Powered-By:
       - ASP.NET
-      Set-Cookie:
-      - ARRAffinity=805c2491375cb99688705ea9b53fd3699437dea86054c9e040cc24406d1ad374;Path=/;HttpOnly;Domain=paramsrobust.azurewebsites.net
       Date:
-      - Wed, 02 Aug 2017 11:23:18 GMT
+      - Fri, 01 Sep 2017 13:20:53 GMT
     body:
       encoding: UTF-8
-      string: "_:node1124013 <http://id.ukpds.org/schema/value> \"M\" .\r\n_:node1124014
-        <http://id.ukpds.org/schema/value> \"J\" .\r\n_:node1124015 <http://id.ukpds.org/schema/value>
-        \"V\" .\r\n_:node1124016 <http://id.ukpds.org/schema/value> \"R\" .\r\n_:node1124017
-        <http://id.ukpds.org/schema/value> \"B\" .\r\n_:node1124018 <http://id.ukpds.org/schema/value>
-        \"P\" .\r\n_:node1124019 <http://id.ukpds.org/schema/value> \"S\" .\r\n_:node1124020
-        <http://id.ukpds.org/schema/value> \"C\" .\r\n_:node1124021 <http://id.ukpds.org/schema/value>
-        \"I\" .\r\n_:node1124022 <http://id.ukpds.org/schema/value> \"F\" .\r\n_:node1124023
-        <http://id.ukpds.org/schema/value> \"G\" .\r\n_:node1124024 <http://id.ukpds.org/schema/value>
-        \"W\" .\r\n_:node1124025 <http://id.ukpds.org/schema/value> \"H\" .\r\n_:node1124026
-        <http://id.ukpds.org/schema/value> \"O\" .\r\n_:node1124027 <http://id.ukpds.org/schema/value>
-        \"D\" .\r\n_:node1124028 <http://id.ukpds.org/schema/value> \"T\" .\r\n_:node1124029
-        <http://id.ukpds.org/schema/value> \"N\" .\r\n_:node1124030 <http://id.ukpds.org/schema/value>
-        \"A\" .\r\n_:node1124031 <http://id.ukpds.org/schema/value> \"L\" .\r\n_:node1124032
-        <http://id.ukpds.org/schema/value> \"E\" .\r\n_:node1124033 <http://id.ukpds.org/schema/value>
-        \"K\" .\r\n_:node1124034 <http://id.ukpds.org/schema/value> \"Y\" .\r\n_:node1124035
-        <http://id.ukpds.org/schema/value> \"Q\" .\r\n_:node1124036 <http://id.ukpds.org/schema/value>
-        \"\\u00D6\" .\r\n_:node1124037 <http://id.ukpds.org/schema/value> \"U\" .\r\n_:node1124038
-        <http://id.ukpds.org/schema/value> \"Z\" .\r\n"
+      string: "_:node2389878 <http://id.ukpds.org/schema/value> \"M\" .\r\n_:node2389879
+        <http://id.ukpds.org/schema/value> \"J\" .\r\n_:node2389880 <http://id.ukpds.org/schema/value>
+        \"V\" .\r\n_:node2389881 <http://id.ukpds.org/schema/value> \"R\" .\r\n_:node2389882
+        <http://id.ukpds.org/schema/value> \"B\" .\r\n_:node2389883 <http://id.ukpds.org/schema/value>
+        \"P\" .\r\n_:node2389884 <http://id.ukpds.org/schema/value> \"S\" .\r\n_:node2389885
+        <http://id.ukpds.org/schema/value> \"C\" .\r\n_:node2389886 <http://id.ukpds.org/schema/value>
+        \"I\" .\r\n_:node2389887 <http://id.ukpds.org/schema/value> \"F\" .\r\n_:node2389888
+        <http://id.ukpds.org/schema/value> \"G\" .\r\n_:node2389889 <http://id.ukpds.org/schema/value>
+        \"W\" .\r\n_:node2389890 <http://id.ukpds.org/schema/value> \"H\" .\r\n_:node2389891
+        <http://id.ukpds.org/schema/value> \"O\" .\r\n_:node2389892 <http://id.ukpds.org/schema/value>
+        \"D\" .\r\n_:node2389893 <http://id.ukpds.org/schema/value> \"T\" .\r\n_:node2389894
+        <http://id.ukpds.org/schema/value> \"N\" .\r\n_:node2389895 <http://id.ukpds.org/schema/value>
+        \"A\" .\r\n_:node2389896 <http://id.ukpds.org/schema/value> \"L\" .\r\n_:node2389897
+        <http://id.ukpds.org/schema/value> \"E\" .\r\n_:node2389898 <http://id.ukpds.org/schema/value>
+        \"K\" .\r\n_:node2389899 <http://id.ukpds.org/schema/value> \"Y\" .\r\n_:node2389900
+        <http://id.ukpds.org/schema/value> \"Q\" .\r\n_:node2389901 <http://id.ukpds.org/schema/value>
+        \"\\u00D6\" .\r\n_:node2389902 <http://id.ukpds.org/schema/value> \"U\" .\r\n_:node2389903
+        <http://id.ukpds.org/schema/value> \"Z\" .\r\n<http://id.ukpds.org/Kz7ncmrt>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.ukpds.org/schema/House>
+        .\r\n<http://id.ukpds.org/Kz7ncmrt> <http://id.ukpds.org/schema/houseName>
+        \"houseName - 1\" .\r\n"
     http_version: 
-  recorded_at: Wed, 02 Aug 2017 11:26:52 GMT
+  recorded_at: Fri, 01 Sep 2017 13:25:54 GMT
 - request:
     method: get
     uri: http://localhost:3030/house_index
@@ -85,25 +88,25 @@ http_interactions:
       message: OK
     headers:
       Cache-Control:
-      - no-cache
-      Pragma:
-      - no-cache
+      - public, must-revalidate, max-age=726
       Content-Length:
       - '420'
       Content-Type:
       - application/n-triples
       Expires:
-      - "-1"
-      Server:
-      - Microsoft-IIS/8.0
+      - Fri, 01 Sep 2017 13:33:00 GMT
+      Last-Modified:
+      - Fri, 01 Sep 2017 13:03:00 GMT
+      Vary:
+      - Accept,Accept-Charset
+      Set-Cookie:
+      - ARRAffinity=2bc84f7540cae9fa0e13ee9b377da85ae072e0086c414b5b16e61e8788fd31c6;Path=/;HttpOnly;Domain=fixedquery201706210753.azurewebsites.net
       X-Aspnet-Version:
       - 4.0.30319
       X-Powered-By:
       - ASP.NET
-      Set-Cookie:
-      - ARRAffinity=805c2491375cb99688705ea9b53fd3699437dea86054c9e040cc24406d1ad374;Path=/;HttpOnly;Domain=paramsrobust.azurewebsites.net
       Date:
-      - Wed, 02 Aug 2017 11:23:19 GMT
+      - Fri, 01 Sep 2017 13:20:53 GMT
     body:
       encoding: UTF-8
       string: "<http://id.ukpds.org/Kz7ncmrt> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>
@@ -112,5 +115,5 @@ http_interactions:
         <http://id.ukpds.org/schema/House> .\r\n<http://id.ukpds.org/MvLURLV5> <http://id.ukpds.org/schema/houseName>
         \"houseName - 2\" .\r\n"
     http_version: 
-  recorded_at: Wed, 02 Aug 2017 11:26:53 GMT
+  recorded_at: Fri, 01 Sep 2017 13:25:55 GMT
 recorded_with: VCR 3.0.3
