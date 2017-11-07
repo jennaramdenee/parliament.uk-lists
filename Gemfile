@@ -26,7 +26,8 @@ gem 'parliament-grom-decorators', '~> 0.11'
 gem 'parliament-utils', '~> 0.4', require: false
 
 # Parliament routing
-gem 'parliament-routes', '~> 0.4'
+# gem 'parliament-routes', '~> 0.4'
+gem 'parliament-routes', path: '../parliament.uk-routes'
 
 # Parliament NTriple processes N-triple data
 gem 'parliament-ntriple', '~> 0.2', require: false
