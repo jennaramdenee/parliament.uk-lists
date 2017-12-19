@@ -1,0 +1,55 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:3030/webarticles_index
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      - application/n-triples
+      User-Agent:
+      - Ruby
+      Ocp-Apim-Subscription-Key:
+      - "<AUTH_TOKEN>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/n-triples
+      Content-Disposition:
+      - inline; filename="index"
+      Last-Modified:
+      - Tue, 19 Dec 2017 15:37:04 GMT
+      X-Content-Type-Options:
+      - nosniff
+      Content-Length:
+      - '2039'
+    body:
+      encoding: UTF-8
+      string: |
+        <https://id.parliament.uk/8MHJ9zSp> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://id.parliament.uk/schema/WebArticle> .
+        <https://id.parliament.uk/8MHJ9zSp> <http://example.com/content/schema/title> "title - 1" .
+        <https://id.parliament.uk/oxGevlNF> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://id.parliament.uk/schema/WebArticle> .
+        <https://id.parliament.uk/oxGevlNF> <http://example.com/content/schema/title> "title - 2" .
+        <https://id.parliament.uk/Vtqt7PEx> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://id.parliament.uk/schema/WebArticle> .
+        <https://id.parliament.uk/Vtqt7PEx> <http://example.com/content/schema/title> "title - 3" .
+        <https://id.parliament.uk/ES78N8GY> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://id.parliament.uk/schema/WebArticle> .
+        <https://id.parliament.uk/ES78N8GY> <http://example.com/content/schema/title> "title - 4" .
+        <https://id.parliament.uk/GqhMqs58> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://id.parliament.uk/schema/WebArticle> .
+        <https://id.parliament.uk/GqhMqs58> <http://example.com/content/schema/title> "title - 5" .
+        <https://id.parliament.uk/Dw0Uwxkh> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://id.parliament.uk/schema/WebArticle> .
+        <https://id.parliament.uk/Dw0Uwxkh> <http://example.com/content/schema/title> "title - 6" .
+        <https://id.parliament.uk/hrjl6a1q> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://id.parliament.uk/schema/WebArticle> .
+        <https://id.parliament.uk/hrjl6a1q> <http://example.com/content/schema/title> "title - 7" .
+        <https://id.parliament.uk/DhZaSyxJ> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://id.parliament.uk/schema/WebArticle> .
+        <https://id.parliament.uk/DhZaSyxJ> <http://example.com/content/schema/title> "title - 8" .
+    http_version: 
+  recorded_at: Tue, 19 Dec 2017 15:59:59 GMT
+recorded_with: VCR 4.0.0

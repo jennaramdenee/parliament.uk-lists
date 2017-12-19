@@ -1,4 +1,10 @@
 .section--primary
-  .container--offset
-    - @articles.each do |article|
-      %h2= link_to(article.title, article_path(article.graph_id))
+  .container
+    %h1= "All articles"
+
+%section#content{ tabindex: "0" }
+  .container
+    %ul.list--block
+      - @articles.each do |article|
+        %ol.list--block
+          %h3= link_to(article.title, article_path(article.graph_id))
