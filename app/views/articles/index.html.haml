@@ -1,0 +1,4 @@
+.section--primary
+  .container--offset
+    - @articles.each do |article|
+      %h2= link_to(article.title, article_path(article.graph_id))
