@@ -4,7 +4,7 @@ RSpec.describe Parties::MembersController, vcr: true do
 
   describe 'GET index' do
     before(:each) do
-      get :index, params: { party_id: '891w1b1k' }
+      get :index, params: { party_id: 'DIifZMjq' }
     end
 
     it 'should have a response with http status ok (200)' do
@@ -34,7 +34,7 @@ RSpec.describe Parties::MembersController, vcr: true do
 
   describe 'GET current' do
     before(:each) do
-      get :current, params: { party_id: '891w1b1k' }
+      get :current, params: { party_id: 'DIifZMjq' }
     end
 
     it 'should have a response with http status ok (200)' do
@@ -64,7 +64,7 @@ RSpec.describe Parties::MembersController, vcr: true do
 
   describe 'GET letters' do
     before(:each) do
-      get :letters, params: { party_id: '891w1b1k', letter: 'f' }
+      get :letters, params: { party_id: 'DIifZMjq', letter: 'f' }
     end
 
     it 'should have a response with http status ok (200)' do
@@ -94,7 +94,7 @@ RSpec.describe Parties::MembersController, vcr: true do
 
   describe 'GET current_letters' do
     before(:each) do
-      get :current_letters, params: { party_id: '891w1b1k', letter: 'f' }
+      get :current_letters, params: { party_id: 'DIifZMjq', letter: 'f' }
     end
 
     it 'should have a response with http status ok (200)' do

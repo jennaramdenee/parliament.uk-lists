@@ -36,7 +36,7 @@ RSpec.describe Houses::MembersController, vcr: true do
 
     context 'when the house of lords' do
       before(:each) do
-        get :index, params: { house_id: 'MvLURLV5' }
+        get :index, params: { house_id: 'WkUWUBMx' }
       end
 
       it 'assigns @current_person_type correctly' do
