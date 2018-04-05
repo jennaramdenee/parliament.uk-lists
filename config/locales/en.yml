@@ -63,7 +63,6 @@ en:
   region_plural: 'regions'
   # global group translations
   group: 'group'
-  groups: 'groups'
   # global government organisation translations
   government_organisation: 'Government Organisation'
   government_organisations: 'Government Organisations'
@@ -277,6 +276,11 @@ en:
           title: # needs title
         current_letters:
           title: '%{current} %{member_type}'
+  # groups translations
+  groups:
+    memberships:
+      index:
+        committee_member: "committee member"
   # postcodes translations
   postcodes:
     find_mp_constituency: 'Find your MP and constituency'

@@ -1,0 +1,40 @@
+.section--primary
+  .container
+    %h1
+      %span= title("Committee members - #{@group.formal_body_name}")
+
+%section#content{ tabindex: "0" }
+  .container
+    -# First list chairs, then people in name order
+    - @members.each do |member|
+
+      -# Image
+      -# - if Pugin::Feature::Bandiera.show_list_images?
+      -#   %figure
+      -#     %a{href: "/people/#{member.graph_id}", tabindex: "-1"}
+      -#       %picture
+      -#       - if member.image_id != "placeholder"
+      -#         %img{ src: "#{ENV['IMAGE_SERVICE_URL']}/#{member.image_id}.jpeg?crop=CU_1:1&width=186&quality=80", alt: "#{member.display_name}" }
+      -#       - else
+      -#         %img{ src: "#{Pugin::ASSET_LOCATION_URL}/#{Pugin::ASSET_VERSION}/images/placeholder_members_image.png", alt: "" }
+
+      -# Member details
+      .list--details
+        %h2
+          %a{href: "/people/#{member.graph_id}"}= member.display_name
+
+        - if member.ex_officio?
+          %p= 'Ex officio ' + t('.committee_member')
+        - if member.alternate?
+          %p= 'Alternate ' + + t('.committee_member')
+        - if member.lay_member?
+          %p= 'Lay ' + t('.committee_member')
+        - else
+          %p= t('.committee_member').capitalize
+
+        - subheading = "Former MP" if member.former_mp?
+        - subheading = "Former Member of the House of Lords" if member.former_lord?
+        - subheading = "#{member.current_party_membership.try(&:party).try(&:name)} MP for #{member.current_seat_incumbency.constituency.name}" if member.current_mp?
+        - subheading = "#{member.current_party_membership.try(&:party).try(&:name)} - #{member.statuses[:house_membership_status].join(' and ')}" if member.current_lord?
+
+        %p= subheading
