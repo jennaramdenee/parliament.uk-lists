@@ -279,8 +279,11 @@ en:
   # groups translations
   groups:
     memberships:
-      index:
+      member:
         committee_member: "committee member"
+        lay_committee_member: "lay committee member"
+        alternate_committee_member: "alternate committee member"
+        ex_officio_committee_member: "ex officio committee member"
   # postcodes translations
   postcodes:
     find_mp_constituency: 'Find your MP and constituency'
