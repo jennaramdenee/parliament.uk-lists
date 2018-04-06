@@ -1,16 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe 'groups/memberships/index', vcr: true do
-  let!(:group) {
-    assign(:group,
-      double(:group,
-        formal_body_name: 'Test formal body name'
-      )
-    )
-  }
-
-  let!(:formal_body_chair_members) {
-    assign(:formal_body_chair_members,
+RSpec.describe 'groups/memberships/member', vcr: true do
+  before do
+    assign(:groups, [double(:group, name: 'GroupName', graph_id: 'P7Ne09WK')])
+    assign(:members,
       [
         double(:member,
           display_name: 'Display Name 1',
@@ -30,15 +23,9 @@ RSpec.describe 'groups/memberships/index', vcr: true do
           alternate?: true,
           lay_member?: false,
           ex_officio?: false
-        )
-      ]
-    )
-  }
+        ),
 
-  let!(:non_chair_members) {
-    assign(:non_chair_members,
-      [
-        double(:member,
+        double (:member,
           display_name: 'Display Name 2',
           graph_id: 'h8h8h8h8',
           current_party_membership:
@@ -56,27 +43,9 @@ RSpec.describe 'groups/memberships/index', vcr: true do
         )
       ]
     )
-  }
-
-  before(:each) do
     render
   end
 
-  context 'heading' do
-    it 'displays correct heading' do
-      expect(response).to match(/Test formal body name/)
-    end
-  end
+  
 
-  context 'formal body chair members' do
-    it 'renders members partial for each member' do
-      expect(response).to render_template(partial: 'groups/memberships/_member')
-    end
-  end
-
-  context 'non chair members' do
-    it 'renders members partial for each member' do
-      expect(response).to render_template(partial: 'groups/memberships/_member')
-    end
-  end
 end
