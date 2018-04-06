@@ -10,19 +10,30 @@ RSpec.describe Groups::MembershipsController, vcr: true do
       expect(response).to have_http_status(:ok)
     end
 
-    it 'assigns @group and @memberships' do
+    it 'assigns @group' do
       expect(assigns(:group)).to be_a(Grom::Node)
-      expect(assigns(:group).type).to eq('https://id.parliament.uk/schema/Group')
+      expect(assigns(:group).type).to eq(['https://id.parliament.uk/schema/Group', 'https://id.parliament.uk/schema/FormalBody'])
+    end
 
-      assigns(:memberships).each do |membership|
-        expect(position).to be_a(Grom::Node)
-        expect(position.type).to eq('https://id.parliament.uk/schema/FormalBodyMembership')
+    it 'assigns @formal_body_chair_members' do
+      assigns(:formal_body_chair_members).each do |member|
+        expect(member).to be_a(Grom::Node)
+        expect(member.type).to eq('https://id.parliament.uk/schema/Person')
       end
     end
 
-    it 'assigns @positions in alphabetical order' do
-      expect(assigns(:memberships)[0].name).to eq('membershipName - 1')
-      expect(assigns(:memberships)[3].name).to eq('membershipName - 12')
+    it 'assigns @people' do
+      assigns(:people).each do |person|
+        expect(person).to be_a(Grom::Node)
+        expect(person.type).to eq('https://id.parliament.uk/schema/Person')
+      end
+    end
+
+    it 'assigns @non_chair_members' do
+      assigns(:non_chair_members).each do |member|
+        expect(member).to be_a(Grom::Node)
+        expect(member.type).to eq('https://id.parliament.uk/schema/Person')
+      end
     end
 
     it 'renders the index template' do
@@ -36,7 +47,7 @@ RSpec.describe Groups::MembershipsController, vcr: true do
           {
             route: 'index',
             parameters: { group_id: 'P7Ne09WK'},
-            data_url: "#{ENV['PARLIAMENT_BASE_URL']}/group_positions_index?group_id=ziLwaBLc"
+            data_url: "#{ENV['PARLIAMENT_BASE_URL']}/group_members_current?group_id=P7Ne09WK"
           }
         ]
 

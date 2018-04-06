@@ -7,22 +7,20 @@ module Groups
     }.freeze
 
     def index
-      @group, @memberships, @people, @formal_body_chairs = Parliament::Utils::Helpers::FilterHelper.filter(
+      group, people, formal_body_chairs = Parliament::Utils::Helpers::FilterHelper.filter(
         @request,
         'Group',
-        'FormalBodyMembership',
         'Person',
         'Position'
       )
 
-      @group = @group.first
-      # @formal_body_chairs = @formal_body_chairs.each do |chair|
-      #   chair.incumbencies.map(&:people).sort_by(:name)
-      # end
-      #
-      # @people = (@people - @formal_body_chairs)
+      @group = group.first
+      @people = people.nodes
+      formal_body_chairs.each do |chair_position|
+        @formal_body_chair_members = chair_position.incumbencies.map(&:people).flatten!.uniq!
+      end
 
-      @members = @memberships.map(&:formalBodyMembershipHasPerson).flatten!
+      @non_chair_members = (@people - @formal_body_chair_members)
     end
   end
 end
