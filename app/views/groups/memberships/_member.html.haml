@@ -28,8 +28,7 @@
 
   - subheading = "Former MP" if member.former_mp?
   - subheading = "Former Member of the House of Lords" if member.former_lord?
-  -# - subheading = "#{member.current_party_membership.try(&:party).try(&:name)} MP for #{member.current_seat_incumbency.constituency.name}" if member.current_mp?
-  - subheading = "#{member.current_party_membership.try(&:party).try(&:name)} MP for #{member.current_seat_incumbency.constituency.name}" if member.incumbencies.select { |incumbency| incumbency.house.name == "House of Commons" && incumbency.end_date.nil? }.any?
+  - subheading = "#{member.current_party_membership.try(&:party).try(&:name)} MP for #{member.current_seat_incumbency.constituency.name}" if member.current_mp?
   - subheading = "#{member.current_party_membership.try(&:party).try(&:name)} - #{member.statuses[:house_membership_status].join(' and ')}" if member.current_lord?
 
   %p= subheading
