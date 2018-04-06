@@ -141,7 +141,7 @@ GEM
     parallel (1.12.1)
     parallel_tests (2.21.3)
       parallel
-    parliament-grom-decorators (0.22.0)
+    parliament-grom-decorators (0.22.2)
     parliament-ntriple (0.3.0)
       grom (~> 0.5)
     parliament-opensearch (0.4.1)
