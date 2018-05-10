@@ -286,7 +286,6 @@ RSpec.describe GroupsController, vcr: true do
           expect(response).to redirect_to(method[:data_url])
         end
       end
-
     end
   end
 

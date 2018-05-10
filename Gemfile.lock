@@ -1,3 +1,8 @@
+PATH
+  remote: ../parliament-grom-decorators
+  specs:
+    parliament-grom-decorators (0.27.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -140,16 +145,15 @@ GEM
     nokogumbo (1.5.0)
       nokogiri
     parallel (1.12.1)
-    parliament-grom-decorators (0.26.0)
     parliament-ntriple (0.3.0)
       grom (~> 0.5)
     parliament-opensearch (0.5.2)
       activesupport (>= 5.0.0.1)
       feedjira (~> 2.1, >= 2.1.2)
-    parliament-routes (0.6.4)
+    parliament-routes (0.6.5)
     parliament-ruby (1.0.0.pre6)
       typhoeus (~> 1.3)
-    parliament-utils (0.8.3)
+    parliament-utils (0.8.4)
       bandiera-client
       coveralls
       haml
@@ -165,7 +169,7 @@ GEM
       ast (~> 2.4.0)
     powerpack (0.1.1)
     public_suffix (3.0.2)
-    pugin (1.8.4)
+    pugin (1.8.5)
     puma (3.10.0)
     rack (2.0.5)
     rack-rewrite (1.5.1)
@@ -314,7 +318,7 @@ DEPENDENCIES
   dotenv
   haml
   listen (>= 3.0.5, < 3.2)
-  parliament-grom-decorators (~> 0.19)
+  parliament-grom-decorators!
   parliament-ntriple (~> 0.2)
   parliament-opensearch (~> 0.2)
   parliament-routes (~> 0.6)

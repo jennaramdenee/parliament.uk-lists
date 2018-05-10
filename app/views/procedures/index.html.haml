@@ -1,0 +1,12 @@
+.section--primary
+  .container
+    %h1= title('Procedures')
+
+%section#content{ tabindex: "0" }
+  .container
+    %ul.list--block
+      - @procedures.each do |procedure|
+        %li
+          .card
+            .card__details
+              %h2= link_to(procedure.name, procedure_path(procedure.graph_id))
