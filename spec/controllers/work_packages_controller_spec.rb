@@ -10,9 +10,9 @@ RSpec.describe WorkPackagesController, vcr: true do
       expect(response).to have_http_status(:ok)
     end
 
-    it 'assigns @work_packageable_things' do
-      expect(assigns(:work_packageable_things).first).to be_a(Grom::Node)
-      expect(assigns(:work_packageable_things).first.type).to include('https://id.parliament.uk/schema/WorkPackageableThing')
+    it 'assigns @work_packages' do
+      expect(assigns(:work_packages).first).to be_a(Grom::Node)
+      expect(assigns(:work_packages).first.type).to include('https://id.parliament.uk/schema/WorkPackage')
     end
 
     it 'renders the index template' do

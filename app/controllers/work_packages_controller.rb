@@ -6,10 +6,10 @@ class WorkPackagesController < ApplicationController
   }.freeze
 
   def index
-    @work_packageable_things = Parliament::Utils::Helpers::FilterHelper.filter(@request, 'WorkPackageableThing')
+    @work_packages = Parliament::Utils::Helpers::FilterHelper.filter(@request, 'WorkPackage')
 
-    @work_packageable_things = Parliament::NTriple::Utils.multi_direction_sort({
-      list: @work_packageable_things.nodes,
+    @work_packages = Parliament::NTriple::Utils.multi_direction_sort({
+      list: @work_packages.nodes,
       parameters: { oldest_business_item_date: :desc, name: :asc },
       prepend_rejected: false
     })

@@ -1,21 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe 'work_packages/index', vcr: true do
-  let!(:work_packageable_things) {
-    assign(:work_packageable_things, [work_packageable_thing])
+  let!(:work_packages) {
+    assign(:work_packages, [work_package])
   }
 
-  let!(:work_packageable_thing) {
-    assign(:work_packageable_thing,
-      double(:work_packageable_thing,
-        name: 'Work Packageable Thing',
+  let!(:work_package) {
+    assign(:work_package,
+      double(:work_package,
         graph_id: '12345678',
         oldest_business_item_date: DateTime.new(2018, 05, 10),
-        work_package:
-          double(:work_package,
-            procedure: double(:procedure,
-              name: 'Procedure 1'
-          )
+        procedure: double(:procedure,
+          name: 'Procedure 1'
         )
       )
     )
@@ -32,8 +28,8 @@ RSpec.describe 'work_packages/index', vcr: true do
   end
 
   context 'work packageable thing' do
-    it 'will render name' do
-      expect(rendered).to have_link('Work Packageable Thing', href: work_package_path('12345678'))
+    it 'will render graph id' do
+      expect(rendered).to have_link('12345678', href: work_package_path('12345678'))
     end
 
     context 'with an oldest business item date' do
@@ -43,17 +39,13 @@ RSpec.describe 'work_packages/index', vcr: true do
     end
 
     context 'without an oldest business item date' do
-      let!(:work_packageable_thing) {
-        assign(:work_packageable_thing,
-          double(:work_packageable_thing,
-            name: 'Work Packageable Thing 1',
+      let!(:work_package) {
+        assign(:work_package,
+          double(:work_package,
             graph_id: '12345678',
             oldest_business_item_date: nil,
-            work_package:
-              double(:work_package,
-                procedure: double(:procedure,
-                  name: 'Procedure 1'
-              )
+            procedure: double(:procedure,
+              name: 'Procedure 1'
             )
           )
         )
@@ -70,13 +62,12 @@ RSpec.describe 'work_packages/index', vcr: true do
     end
 
     context 'without a procedure name' do
-      let!(:work_packageable_thing) {
-        assign(:work_packageable_thing,
-          double(:work_packageable_thing,
-            name: 'Work Packageable Thing',
+      let!(:work_package) {
+        assign(:work_package,
+          double(:work_package,
             graph_id: '12345678',
             oldest_business_item_date: DateTime.new(2018, 05, 10),
-            work_package: nil
+            procedure: nil
           )
         )
       }

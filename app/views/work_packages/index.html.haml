@@ -5,15 +5,15 @@
 %section#content{ tabindex: "0" }
   .container
     %ul.list--block
-      - @work_packageable_things.each do |work_packageable_thing|
+      - @work_packages.each do |work_package|
         %li
           .card
             .card__details
-              -# Name of the work packageable thing, and link
-              %h2= link_to(work_packageable_thing.name, work_package_path(work_packageable_thing.graph_id))
+              -# ID of the work package, and link
+              %h2= link_to(work_package.graph_id, work_package_path(work_package.graph_id))
               -# Date of the oldest business item
-              - if work_packageable_thing.oldest_business_item_date
-                %p= "#{l(work_packageable_thing.oldest_business_item_date, format: :default)}"
+              - if work_package.oldest_business_item_date
+                %p= "#{l(work_package.oldest_business_item_date, format: :default)}"
               -# Procedure name
-              - if work_packageable_thing.work_package.try(&:procedure)
-                %p= "#{work_packageable_thing.work_package.procedure.name} procedure"
+              - if work_package.procedure&.name
+                %p= "#{work_package.procedure.name} procedure"
